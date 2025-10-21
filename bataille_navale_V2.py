@@ -59,6 +59,16 @@ class Ship:
     def __repr__(self):
         return f"Bateau: {self.name}, positions: {list(self.position.keys())}"
 
+class Fleet:
+    def __init__(self):
+        self.ships = []
+
+    def __repr__(self):
+        return f"Voici la flotte : {self.ships}"
+
+    def add_ship(self, ship):
+        self.ships.append(ship)
+
 
 # exemple de flotte
 aircraft_carrier_position = [(2, 2), (2, 3), (2, 4), (2, 5), (2, 6)]
@@ -75,6 +85,13 @@ submarine = Ship("Submarine", submarine_position)
 
 torpedo_boat_position = [(9, 5), (9, 6)]
 torpedo_boat = Ship("Torpedo", torpedo_boat_position)
+
+fleet = Fleet()
+for ship in Ship.boats:
+    fleet.add_ship(ship)
+
+ships_list = [[ship.name, ship.position] for ship in fleet.ships]
+print(ships_list)
 
 
 def get_ship_by_coord():
