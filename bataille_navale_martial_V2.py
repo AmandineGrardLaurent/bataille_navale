@@ -56,24 +56,11 @@ class Ship:
         self.position = { (pos_x, pos_y):True for (pos_x, pos_y) in position}
         Ship.boats.append(self)
 
-    def ship_is_hit(self, shot_coord):
-        return shot_coord in self.position.keys()
-
-    def ship_is_sunk(self):
-        return not any(self.position.values())
-
     def __repr__(self):
         return f"Bateau: {self.name}, positions: {list(self.position.keys())}"
 
-class Fleet:
-    def __init__(self):
-        self.ships = []
-
-    def add_ship(self, ship):
-        self.ships.append(ship)
 
 # exemple de flotte
-
 aircraft_carrier_position = [(2, 2), (2, 3), (2, 4), (2, 5), (2, 6)]
 aircraft_carrier = Ship("Aircraft Carrier", aircraft_carrier_position)
 
@@ -88,17 +75,6 @@ submarine = Ship("Submarine", submarine_position)
 
 torpedo_boat_position = [(9, 5), (9, 6)]
 torpedo_boat = Ship("Torpedo", torpedo_boat_position)
-
-new_fleet = Fleet()
-for ship in Ship.boats:
-    new_fleet.add_ship(ship)
-
-print(new_fleet.ships[1])
-
-"""for boat in Ship.boats:
-    print(f"{boat.name}")"""
-
-#print(Ship.ship_is_hit("E1"))
 
 
 def get_ship_by_coord():
